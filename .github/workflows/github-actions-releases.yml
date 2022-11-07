@@ -40,7 +40,7 @@ jobs:
         run: node ./scripts/ticket
 
       - name: Create Docker container
-        run: docker build -t $(node ./scripts/docker_name) .
+        run: docker build -t $(node ./scripts/docker) .
 
       - name: Add docker comment
         run: node ./scripts/comment
