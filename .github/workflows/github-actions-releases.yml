@@ -2,7 +2,7 @@ name: Build release
 
 env:
   ISSUE: ${{ secrets.ISSUE }}
-  ORG_ID: ${{ secrets.ORG_ID }}
+  ORG_ID: ${{ secrets.X_Org_ID }}
   TOKEN: ${{ secrets.TOKEN }}
 
 on:
