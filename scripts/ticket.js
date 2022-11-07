@@ -3,9 +3,12 @@ const {api} = require("./api");
 
 async function updateTicket() {
     try {
-        console.log(process.env.TOKEN)
-        console.log(process.env.X_Org_ID)
-        console.log(process.env.ISSUE)
+        let token = process.env.TOKEN
+        let X_Org_ID = process.env.X_Org_ID
+        let ISSUE = process.env.ISSUE
+        console.log(token)
+        console.log(X_Org_ID)
+        console.log(ISSUE)
         console.log('Получаем последние коммиты')
         const {commits, lastCommiter} = await getCommits();
         console.log('Список последних коммитов')
@@ -27,7 +30,7 @@ async function updateTicket() {
         console.log('Тикет обновлён')
     } catch (error) {
         console.log('Ошибка при обновлении тикета')
-        console.log(error);
+        console.log(error.request);
     }
 }
 

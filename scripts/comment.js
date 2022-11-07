@@ -8,7 +8,7 @@ async function createComment() {
         console.log('Комментарий добавлен')
     }catch (error) {
         console.log('Ошибка при добавлении комментария')
-        console.log(error);
+        console.log(error.request);
     }
 }
 
