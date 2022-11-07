@@ -3,6 +3,9 @@ const {api} = require("./api");
 
 async function updateTicket() {
     try {
+        console.log(process.env.TOKEN)
+        console.log(process.env.X_Org_ID)
+        console.log(process.env.ISSUE)
         console.log('Получаем последние коммиты')
         const {commits, lastCommiter} = await getCommits();
         console.log('Список последних коммитов')
