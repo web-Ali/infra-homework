@@ -19,8 +19,10 @@ async function getTags() {
 async function getCommits() {
     try {
         const {lastTag, tagBeforeLast} = await getTags();
+        console.log(lastTag, tagBeforeLast)
         if (lastTag && tagBeforeLast) {
             const data = await api.getRangeCommit(lastTag, tagBeforeLast);
+            console.log(data)
             const commits = data.commits.map((el) => {
                 return `${el.sha} ${el.commit.author.name} ${el.commit.message}`;
             }).join('\n');
