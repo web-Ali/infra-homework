@@ -11,8 +11,8 @@ const instanceGithub = axios.create({
     baseURL: 'https://api.github.com',
 });
 const api = {
-    patchTicket: (data)=> instanceTracker.patch(`/v2/issues/${process.env.ISSUE}`,JSON.stringify(data)),
-    postComment:(text)=> instanceTracker.post(`/v2/issues/${process.env.ISSUE}/comments`,JSON.stringify(text)),
+    patchTicket: (data)=> instanceTracker.patch(`/v2/issues/HOMEWORKSHRI-167`,JSON.stringify(data)),
+    postComment:(text)=> instanceTracker.post(`/v2/issues/HOMEWORKSHRI-167/comments`,JSON.stringify(text)),
     getTags: ()=> instanceGithub.get('/repos/web-Ali/infra-homework/git/refs/tags').then(res=>res.data),
     getRangeCommit: (lastTag, tagBeforeLast)=> instanceGithub.get(`/repos/web-Ali/infra-homework/compare/${tagBeforeLast}...${lastTag}`).then(res=>res.data),
     getAllCommit: ()=> instanceGithub.get('/https://api.github.com/repos/web-Ali/infra-homework/commits').then(res=>res.data)

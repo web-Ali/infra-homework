@@ -30,7 +30,7 @@ async function updateTicket() {
         console.log('Тикет обновлён')
     } catch (error) {
         console.log('Ошибка при обновлении тикета')
-        console.log(error.request);
+        console.log(error);
     }
 }
 

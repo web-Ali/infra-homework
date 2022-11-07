@@ -1,6 +1,6 @@
 let {api} = require("./api")
 
-async function getTags() {
+async function  getTags() {
     try {
         const data = await api.getTags();
         if (data.length < 2) {
