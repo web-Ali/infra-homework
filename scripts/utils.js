@@ -1,5 +1,4 @@
 let {api} = require("./api")
-const {log} = require("util");
 
 async function getTags() {
     try {
