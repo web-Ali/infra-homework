@@ -20,7 +20,7 @@ async function updateTicket() {
         console.log(`Формируем описание: ${description}`)
 
         console.log('Обновляем тикет')
-        api.patchTicket({title, description})
+        await api.patchTicket({title, description})
         console.log('Тикет обновлён')
     } catch (error) {
         console.log('Ошибка при обновлении тикета')
