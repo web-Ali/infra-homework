@@ -1,4 +1,5 @@
 let {api} = require("./api")
+const {log} = require("util");
 
 async function getTags() {
     try {
@@ -12,6 +13,7 @@ async function getTags() {
             return {lastTag, tagBeforeLast};
         }
     } catch (error) {
+        console.log('Ошибка при получении тегов')
         console.log(error);
     }
 }
@@ -19,24 +21,30 @@ async function getTags() {
 async function getCommits() {
     try {
         const {lastTag, tagBeforeLast} = await getTags();
-        console.log(lastTag, tagBeforeLast)
+        let lastCommiter = ''
         if (lastTag && tagBeforeLast) {
             const data = await api.getRangeCommit(lastTag, tagBeforeLast);
-            console.log(data)
             const commits = data.commits.map((el) => {
+                lastCommiter = el.commit.author.name
                 return `${el.sha} ${el.commit.author.name} ${el.commit.message}`;
             }).join('\n');
-            return commits;
+            return {commits, lastCommiter};
         } else {
             const data = await api.getAllCommit();
+
             const commits = data.map((el) => {
+                lastCommiter = el.commit.author.name
                 return `${el.sha} ${el.commit.author.name} ${el.commit.message}`;
             }).join('\n');
-            return commits;
+            return {commits, lastCommiter};
         }
     } catch (error) {
+        console.log('Ошибка при получении коммитов')
         console.log(error);
     }
 }
 
-getCommits().then(res => console.log(res))
+module.exports = {
+    getCommits,
+    getTags
+}
