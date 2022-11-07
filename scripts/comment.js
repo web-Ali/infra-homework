@@ -5,11 +5,12 @@ async function createComment() {
     try {
         const {lastTag} = await getTags();
         console.log(lastTag)
-        await api.postComment({text: `Собрали образ с тегом ${lastTag}`})
+        let text = `Собрали образ с тегом ${lastTag}`
+        await api.postComment({text})
         console.log('Комментарий добавлен')
     }catch (error) {
         console.log('Ошибка при добавлении комментария')
-        console.log(error);
+        console.log(error.data);
     }
 }
 
