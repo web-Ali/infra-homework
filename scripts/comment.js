@@ -9,8 +9,9 @@ async function createComment() {
         await api.postComment({text})
         console.log('Комментарий добавлен')
     }catch (error) {
-        console.log('Ошибка при добавлении комментария')
-        console.log(error.data);
+        console.log('Ошибка при добавлении комментария');
+        throw error
+
     }
 }
 
